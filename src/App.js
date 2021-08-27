@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/header/Header'
+
+import './App.css'
+import { useSelector } from 'react-redux';
+import Login from './components/Login/Login';
+import { useState } from 'react';
+import RoutingPage from './components/RoutingPage';
 
 function App() {
+  
+  const color=useSelector((state)=>{return(state.form.theme)})
+  document.body.style.background=color;
+  const [authToken,setAuthToken]=useState(localStorage.getItem('auth-token'))
+  const handleSubmit=(token)=>{
+    setAuthToken(token)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      {authToken?<RoutingPage />:<Login handleSubmit={handleSubmit}/>}
     </div>
   );
 }
