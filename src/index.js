@@ -9,7 +9,10 @@ import store from './redux/store'
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+   
+    <iframe width="100%" height="100%" src="https://w2.countingdownto.com/3789127" frameborder="0"></iframe>
+   
+
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
